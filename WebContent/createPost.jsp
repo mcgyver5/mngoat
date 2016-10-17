@@ -13,7 +13,10 @@ Post Content:
 </textarea>
 
 <input type="submit">
-
+<hr>
+<hr>
+<br>
+LLLLLLLLLLLLLLLLLL
 </form>
 </body>
 </html>
