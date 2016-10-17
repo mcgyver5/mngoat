@@ -1,0 +1,239 @@
+<html>
+<head>
+	<title>Bunny Click</title>
+	
+<script type='text/javascript'>//<![CDATA[
+window.onload=function(){
+		var eyeleft = document.getElementById("eyeleft");
+		var eyeright = document.getElementById("eyeright");
+
+		//made blink a named function to improve readability a bit
+		var blink = function(isSecondBlink) {
+		  //got rid of the ternary expressions since we're always doing
+		  //open eyes -> close eyes -> delay -> open eyes
+
+		  //close both eyes
+		  eyeleft.className = "closedeyeleft";
+		  eyeright.className = "closedeyeright";
+
+		  //let's reopen those eyes after a brief delay to make a nice blink animation
+		  setTimeout(function() {
+		    eyeleft.className = "eyeleft";
+		    eyeright.className = "eyeright";
+		  }, 200);
+
+		  if (isSecondBlink) {
+		    return;
+		  } //prevents us from blinking 3+ times
+
+		  //This provides a 40% chance of blinking twice, adjust as needed
+		  var blinkAgain = Math.random() <= 0.4;
+
+		  //if we need to blink again, go ahead and do it in 300ms
+		  if (blinkAgain) {
+		    setTimeout(function() {
+		      blink(true);
+		    }, 300);
+		  }
+		}
+
+		//go ahead and blink every 2 seconds
+		window.onload = setInterval(blink, 2000);
+
+		// Reaktionsgame
+		var start = new Date().getTime();
+		var gameBox = document.getElementById("game-frame");
+		var timer = document.getElementById("timer");
+		var shape = document.getElementById("shape");
+
+		function showShapes() {
+		  var top = [Math.floor(Math.random() * 80)];
+		  var left = [Math.floor(Math.random() * 90)];
+		  var bgColors = ['tomato', 'gold', 'cornflowerblue', 'mediumaquamarine', 'pink', 'lavender', 'lightgreen', 'lightpink', 'mediumspringgreen', 'mediumpurple', 'mistyrose', 'moccasin', 'palegreen', 'orchid'];
+		  var border = ['6px', '50%'];
+
+		  shape.style.opacity = "1";
+		  shape.style.top = top + "%";
+		  shape.style.left = left + "%";
+		  shape.style.backgroundColor = bgColors[Math.floor(Math.random() * bgColors.length)];
+		  shape.style.borderRadius = border[Math.floor(Math.random() * border.length)];
+
+		  start = new Date().getTime();
+		}
+
+		function appearAfterDelay() {
+		  setTimeout(showShapes, Math.random() * 2000);
+		}
+
+		appearAfterDelay();
+
+		shape.onclick = function() {
+		  var end = new Date().getTime();
+		  var timeTaken = (end - start) / 1000;
+
+		  shape.style.opacity = "0";
+		  timer.innerHTML = timeTaken + " s";
+		  appearAfterDelay();
+		}
+}//]]> 
+	</script>
+	<style>
+				.game-container {
+			  padding: 35px 50px;
+			}
+			
+			.timer-box {
+			  font-weight: bold;
+			}
+			
+			.timer-box span {
+			  color: tomato;
+			}
+			
+			#game-frame {
+			  border: 1px solid gold;
+			  padding: 20px;
+			  width: 600px;
+			  height: 300px;
+			  border-radius: 6px;
+			}
+			
+			.game-shapes {
+			  height: 80px;
+			  width: 80px;
+			  cursor: pointer;
+			  opacity: 0;
+			  position: relative;
+			  transition: opacity ease-in-out .2s;
+			}
+			
+			.game-shapes div {
+			  position: absolute;
+			}
+			
+			.ears {
+			  width: 22px;
+			  height: 70px;
+			  background: inherit;
+			  bottom: 50%;
+			  border-radius: 20px 20px 0 0;
+			}
+			
+			.ears.left {
+			  left: 0;
+			}
+			
+			.ears.right {
+			  right: 0;
+			}
+			
+			.eyeleft,
+			.eyeright {
+			  background: #000;
+			  border-radius: 50%;
+			  width: 20px;
+			  height: 20px;
+			  top: 30px;
+			}
+			
+			.eyeleft {
+			  left: 4px;
+			}
+			
+			.eyeright {
+			  right: 4px;
+			}
+			
+			.eyeleft:before,
+			.eyeleft:after,
+			.eyeright:before,
+			.eyeright:after {
+			  content: '';
+			  background: #fff;
+			  width: 7px;
+			  height: 7px;
+			  top: 4px;
+			  left: 4px;
+			  border-radius: 50%;
+			  position: absolute;
+			  z-index: 5;
+			}
+			
+			.eyeleft:after,
+			.eyeright:after {
+			  width: 4px;
+			  height: 4px;
+			  top: 10px;
+			  left: 10px;
+			}
+			
+			.closedeyeleft,
+			.closedeyeright {
+			  background: transparent none repeat scroll 0 0;
+			  border-color: #000;
+			  border-radius: 5px;
+			  border-style: solid;
+			  border-width: 4px 4px 0;
+			  height: 4px;
+			  top: 35px;
+			  width: 12px;
+			}
+			
+			.closedeyeleft {
+			  left: 3px;
+			}
+			
+			.closedeyeright {
+			  right: 3px;
+			}
+			
+			#mouth {
+			  background: #000;
+			  border-radius: 0 0 50% 50%;
+			  bottom: 20px;
+			  height: 22px;
+			  left: calc(50% - 12px);
+			  width: 24px;
+			}
+			
+			#tooth {
+			  background: #fff;
+			  top: 2px;
+			  left: 2px;
+			  width: calc(100% - 4px);
+			  height: 4px;
+			  border-radius: 0 0 2px 2px;
+			}
+			
+			#tongue {
+			  background: tomato;
+			  bottom: 2px;
+			  left: 4px;
+			  width: calc(100% - 8px);
+			  height: 6px;
+			  border-radius: 50%;
+			}
+
+	</style>
+<body>
+<div id="game" class="game-container">
+  <h1 class="headline">Test Your Reaction Time</h1>
+  <p class="sub-headline">Click The Bunny as fast as you can after it appears!</p>
+  <p class="timer-box">Your Time: <span id="timer"></span></p>
+  <div id="game-frame">
+    <div id="shape" class="game-shapes">
+      <div class="ears left"></div>
+      <div class="ears right"></div>
+      <div id="eyeleft" class="eyeleft"></div>
+      <div id="eyeright" class="eyeright"></div>
+      <div id="mouth">
+        <div id="tooth"></div>
+        <div id="tongue"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<a href=index.html>This Sucks, take me back to menu.</a>
+</body>
+</html>
