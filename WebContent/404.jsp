@@ -16,7 +16,7 @@
 		<!-- content -->
 		<div id="content">
 			<ul class="nav">
-         	<li class="home"><a href="/DHSGoat">Home Page</a></li>
+         	<li class="home"><a href="${pageContext.request.contextPath}">Home Page</a></li>
         
          </ul>
          <p>The page you requested, <%=request.getParameter("url") %> was not found</p>

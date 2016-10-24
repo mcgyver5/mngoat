@@ -9,7 +9,7 @@
 <c:forEach items="${postList}" var="post" >
 	<h2>${post.postTitle}</h2>
 	<p>${post.postContent}</p>
-	<br><a href="/DHSGoat/DeletePost?action=delete&postId=${post.postId}">Delete Post</a>
+	<br><a href="${pageContext.request.contextPath}/DeletePost?action=delete&postId=${post.postId}">Delete Post</a>
 	<br>
 	<hr>
 </c:forEach>

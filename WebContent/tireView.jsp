@@ -32,6 +32,6 @@ Tires:
           </tr>
        </c:forEach>
     </table>
-    <a href="/DHSGoat/tireForm.jsp">Create new Tire Entry</a>
+    <a href="${pageContext.request.contextPath}/tireForm.jsp">Create new Tire Entry</a>
 </body>
 </html>

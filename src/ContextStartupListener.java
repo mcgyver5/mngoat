@@ -113,8 +113,8 @@ public class ContextStartupListener implements ServletContextListener, ServletCo
 			int countPosts = countRS2.getInt(1);
 			if(countPosts < 1){
 				connection.prepareStatement("INSERT INTO ANNOUNCEMENT (post_id,post_title,post_content) values "
-						+ "(101,'WELCOME TO minitgoat','  This Post should allow HTML Markup like <b>BOLD</b> "
-						+ "and <a href=\"/minitgoat\">LINKS</a>')").execute();
+						+ "(101,'WELCOME TO MNGoat','  This Post should allow HTML Markup like <b>BOLD</b> "
+						+ "and <a href=\"/mngoat\">LINKS</a>')").execute();
 						
 			}
 			if(tireCount < 4){

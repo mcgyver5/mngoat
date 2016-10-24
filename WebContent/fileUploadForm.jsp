@@ -24,7 +24,7 @@ String y = "MCGUIRE";
 out.println(y);
 
 %>
-<form action="/DHSGoat/FileUploadServlet" method="POST" enctype="multipart/form-data">
+<form action="${pageContext.request.contextPath}/FileUploadServlet" method="POST" enctype="multipart/form-data">
 <input type="file" name="filename">
 <input type="submit">
 </form>

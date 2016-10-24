@@ -65,8 +65,8 @@ public class ErrorHandler extends HttpServlet {
 	      }
 	      out.println("</body>");
 	      out.println("</html>");
-	      
-	      response.sendRedirect("/minitgoat/404.jsp?url="+ requestUri);
+	      String ctx = request.getContextPath();
+	      response.sendRedirect(ctx+ "/404.jsp?url="+ requestUri);
 	  }
 	  // Method to handle POST method request.
 	  public void doPost(HttpServletRequest request,

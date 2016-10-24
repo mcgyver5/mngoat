@@ -5,7 +5,7 @@
 </head>
 <body>
  <%@ include file="header.jsp" %>
-<form action="/DHSGoat/CreatePostServlet" Method="POST">
+<form action="${pageContext.request.contextPath}/CreatePostServlet" Method="POST">
 
 Post Title:<input type="text" name="postTitle"><br>
 Post Content:

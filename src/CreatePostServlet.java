@@ -69,8 +69,9 @@ public class CreatePostServlet extends HttpServlet {
 		}
 		System.out.println("Deleted Post ID " + postId);
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		response.getWriter().append("<br><a href='/minitgoat/Welcome'>Read Posts</a> ");
-		response.getWriter().append("<br><a href='/minitgoat'>HOME</a> ");
+		String ctx = request.getContextPath();
+		response.getWriter().append("<br><a href='" + ctx + "/minitgoat/Welcome'>Read Posts</a> ");
+		response.getWriter().append("<br><a href='" + ctx + "/minitgoat'>HOME</a> ");
 	}
 
 	/**

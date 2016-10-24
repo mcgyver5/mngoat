@@ -20,6 +20,6 @@ if(request.getParameter("lastName") !=null){
 <a href="page2.jsp?arch=5">PAGE 2 (protected By ESAPI)</a><br>
 <a href="page3.jsp?abc=5">PAGE 3 (Number Guessing - Protected by Input Validation)</a>
 <br>
-<a href="/DHSGoat">HOME</a>
+
 </body>
 </html>

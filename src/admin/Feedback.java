@@ -89,13 +89,11 @@ public class Feedback extends HttpServlet {
 		System.out.println("FOUND " + postList.size());
 		
 		 request.setAttribute("postList", postList);
-			System.out.println("FOUND SERVLET ANYWAYS........................91");
-
-		 RequestDispatcher dispatcher = request.getServletContext()
-	                .getRequestDispatcher("/minitgoat/admin/admin.jsp");
-			System.out.println("FOUND SERVLET ANYWAYS........................95");
-
-			response.sendRedirect("/minitgoat/admin/feedbacks.jsp");
+			
+//		 RequestDispatcher dispatcher = request.getServletContext()
+//	                .getRequestDispatcher("/minitgoat/admin/admin.jsp");
+		 String ctx = request.getContextPath();
+			response.sendRedirect(ctx + "/admin/feedbacks.jsp");
 //	        dispatcher.forward(request, response);
 		
 	}
