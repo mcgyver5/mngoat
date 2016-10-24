@@ -5,6 +5,7 @@
 <title>MNGoat</title>
 </head>
 <body>
+ <%@ include file="header.jsp" %>
 <h3>Welcome To MNGoat.</h3>
 This is an application for selling bicycle insurance. 
 <hr>
