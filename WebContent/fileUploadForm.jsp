@@ -18,12 +18,7 @@ Contain Second Order SQL Injection
 <br>
 Contain De-Serialization Attack
 <br>
-<%
-String s = request.getParameter("str");
-String y = "MCGUIRE";
-out.println(y);
 
-%>
 <form action="${pageContext.request.contextPath}/FileUploadServlet" method="POST" enctype="multipart/form-data">
 <input type="file" name="filename">
 <input type="submit">
