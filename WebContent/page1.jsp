@@ -1,7 +1,10 @@
-<html>
-<head><title>Not Protected</title></head>
-<body>
- <%@ include file="header.jsp" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+
+<t:genericpage>
+
+Not Protected!
+<br>
 <% 
 if(request.getParameter("abc") !=null){
 	String req = request.getParameter("abc");
@@ -21,5 +24,4 @@ if(request.getParameter("abc") !=null){
 <a href="page3.jsp?abc=5">PAGE 3 (Number Guessing - Protected by Input Validation)</a>
 
 <a href="page4.jsp?lastName=Jones">PAGE 4 (NotProtected)</a>
-</body>
-</html>
+</t:genericpage>

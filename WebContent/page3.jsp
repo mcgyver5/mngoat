@@ -1,9 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<body>
- <%@ include file="header.jsp" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+
+<t:genericpage>
+
 <%! 
    public String stripParameter(String param) { 
 
@@ -56,6 +55,4 @@ See how good you are at guessing random numbers (between 1 and 100)
 
 </form>
 <hr>
-This is intellectual property, believe it or not.
-</body>
-</html>
+</t:genericpage>

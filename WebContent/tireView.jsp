@@ -1,12 +1,11 @@
 
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<title>Bicycle Tire Data 4 You</title>
-</head>
-<body>
- <%@ include file="header.jsp" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+
+<t:genericpage>
+
 <form action = "BikeTires" method="POST">
 Search String: <input type = "text" name="searchString">
 <input type="submit" vale = "search">
@@ -33,5 +32,4 @@ Tires:
        </c:forEach>
     </table>
     <a href="${pageContext.request.contextPath}/tireForm.jsp">Create new Tire Entry</a>
-</body>
-</html>
+</t:genericpage>

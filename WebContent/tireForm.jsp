@@ -1,10 +1,8 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<title>Insert title here</title>
-</head>
-<body>
- <%@ include file="header.jsp" %>
+<t:genericpage>
+
 <form name="tireForm" action="CreateTire" method="POST">
 Brand: <input type="text" name="brand"><br>
 Model: <input type="text" name="model"><br>
@@ -16,5 +14,4 @@ Width (mm): <input type="text" name="width"><br>
 Weight (g): <input type="text" name="weight"><br>
 <input type="submit">
 </form>
-</body>
-</html>
+</t:genericpage>
