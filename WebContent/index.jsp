@@ -11,11 +11,13 @@
 	<a href=fileUploadForm.jsp>Upload a file.</a><br>
 	JSP Pages:<br>
 	<ul>
-	<li>
-	<a href=page1.jsp?abc=Minnesota>JSP Page 1</a></li>
-	
+	<li><a href="PicturesServlet">View uploaded Pictures</a></li>
+	<li><a href=page1.jsp?abc=Minnesota>JSP Page 1</a></li>	
 	<li><a href=page2.jsp?arch=5>Page 2:  Parameter arch protected by ESAPI</a></li>
 	<li><a href=page3.jsp>JSP page3  (Protected by input validation)</a></li>
+	
+	<li><a href=bikeparts.jsp>Browse pictures of bike parts  (Not Protected)</a></li>
+		<li><a href=bikepartsprotected.jsp>Browse pictures of bike parts  (Protected by Content Security Policy)</a></li>
 	</ul>
 	
 		

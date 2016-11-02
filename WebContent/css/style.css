@@ -19,6 +19,11 @@ img {
 	text-align:left;
 }
 
+img.med {
+	height: 220px;
+    width: 150px;
+    margin: 12px 12px 12px 12px;
+}
 ul, ol { 
 	list-style:none;
 }

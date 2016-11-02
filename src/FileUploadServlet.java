@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -45,8 +46,8 @@ public class FileUploadServlet extends HttpServlet {
 	    	fileName = getFileName(part);
 	    	part.write(filesDir + File.separator + fileName);
 	    }
-		out.append("Served at: ").append(request.getContextPath());
-		out.print("</body></html>");
+	    response.sendRedirect("PicturesServlet");
+		
 	}
 
 	private String getFileName(Part part) {

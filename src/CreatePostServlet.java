@@ -38,10 +38,16 @@ public class CreatePostServlet extends HttpServlet {
 		String action = request.getParameter("action");
 		String postId = request.getParameter("postId");
 		//int id = Integer.parseInt(postId);
+		int id = 0;
 		if(action.equals("delete")){
 			Connection connection = null;
 			ResultSet rs = null;
-			int id = Integer.parseInt(postId);
+			try{
+				id = Integer.parseInt(postId);
+			} catch (NumberFormatException nfe){
+				System.out.println("Number Format exception... string was " + postId + " and we tried to make it a number...");
+				nfe.printStackTrace();
+			}
 			try {
 				connection = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/bikes", "sa", "");
 				Class.forName("org.hsqldb.jdbcDriver");

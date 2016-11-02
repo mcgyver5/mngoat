@@ -1,9 +1,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
 <t:genericpage>
 
- <%@ include file="header.jsp" %>
 <c:forEach items="${postList}" var="post" >
 	<h2>${post.postTitle}</h2>
 	<p>${post.postContent}</p>

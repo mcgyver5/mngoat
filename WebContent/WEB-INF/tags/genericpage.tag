@@ -5,11 +5,19 @@
 <html>
 	<head>
 		<title>MNGoat</title>
+		<link rel="stylesheet" href="css/style.css">
 	</head>
   <body>
     <div id="pageheader">
-		<a href="${pageContext.request.contextPath}"><img height="100" src="images/goat22.png"><img height="100" src="images/goat22.png"></a><h4><a href="${pageContext.request.contextPath}">HOME</a></h4>
-	<hr>
+		<a href="${pageContext.request.contextPath}">
+			<img height="100" src="images/goat22.png"><img height="100" src="images/goat22.png">
+			<img height="100" src="images/goat22.png"><img height="100" src="images/goat22.png">
+			<img height="100" src="images/goat22.png"><img height="100" src="images/goat22.png">
+		</a>
+			<h4>
+				<a href="${pageContext.request.contextPath}">HOME</a>
+			</h4>
+		<hr>
     </div>
     <div id="body">
       <jsp:doBody/>

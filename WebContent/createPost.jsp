@@ -12,8 +12,6 @@ Post Content:
 
 <input type="submit">
 <hr>
-<hr>
 <br>
-LLLLLLLLLLLLLLLLLL
 </form>
 </t:genericpage>

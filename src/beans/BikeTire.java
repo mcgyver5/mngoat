@@ -39,11 +39,33 @@ public class BikeTire {
 	public void setPrice(int price) {
 		this.price = price;
 	}
+
+	public int getWeight() {
+		return weight;
+	}
+	public void setWeight(int weight) {
+		this.weight = weight;
+	}
+	public String getManufacturer() {
+		return manufacturer;
+	}
+	public void setManufacturer(String manufacturer) {
+		this.manufacturer = manufacturer;
+	}
+	public String getCountryOfOrigin() {
+		return countryOfOrigin;
+	}
+	public void setCountryOfOrigin(String countryOfOrigin) {
+		this.countryOfOrigin = countryOfOrigin;
+	}
 	private int id;
 	private String make;
 	private String model;
 	private int size;
 	private int price;
+	private int weight;
+	private String manufacturer;
+	private String countryOfOrigin;
 	public BikeTire() {
 		// TODO Auto-generated constructor stub
 	}

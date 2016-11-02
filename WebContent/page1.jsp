@@ -1,23 +1,25 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
-
-<t:genericpage>
-
-Not Protected!
-<br>
-<% 
+<%
+String output = "";
 if(request.getParameter("abc") !=null){
 	String req = request.getParameter("abc");
 	if(req.equals("mcguire")){
-		out.println("Hello Tim");
+		output = "Hello Tim";
 	} else {
-		out.println(req);
+		output = req;
 	}
 } else {
-	out.println("NULL!");
+	output = "NULL!";
 }
-
+request.setAttribute("output", output);
 %>
+<t:genericpage>
+
+Not Protected!
+OUTPUT IS ${output}
+<br>
+
 
 <h2>Hello World!</h2>
 <a href="page2.jsp?arch=5">PAGE 2 (protected By ESAPI)</a><br>

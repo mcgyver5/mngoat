@@ -86,10 +86,10 @@ public class ContextStartupListener implements ServletContextListener, ServletCo
 					+ "tire_weight integer, "
 					+ "tire_manufacturer varchar(100), "
 					+ "country_of_origin varchar(100))").execute();
-			connection.prepareStatement("drop table announcement if exists;").execute();
+		//	connection.prepareStatement("drop table announcement if exists;").execute();
 					
 			connection.prepareStatement("create table if not exists announcement (post_id integer, post_title varchar(20), post_content varchar(1200))").execute();
-			connection.prepareStatement("drop table users if exists;").execute();
+			// connection.prepareStatement("drop table users if exists;").execute();
 			
 			connection.prepareStatement("create table if not exists users (user_id integer, username varchar(500), password varchar(200), user_role varchar(200))").execute();
 			ResultSet countUsers = connection.prepareStatement("Select count(*) from users").executeQuery();
@@ -113,8 +113,8 @@ public class ContextStartupListener implements ServletContextListener, ServletCo
 			int countPosts = countRS2.getInt(1);
 			if(countPosts < 1){
 				connection.prepareStatement("INSERT INTO ANNOUNCEMENT (post_id,post_title,post_content) values "
-						+ "(101,'WELCOME TO MNGoat','  This Post should allow HTML Markup like <b>BOLD</b> "
-						+ "and <a href=\"/mngoat\">LINKS</a>')").execute();
+						+ "(101,'WELCOME TO MNGoat','This Post should allow HTML Markup like <b>BOLD</b> "
+						+ "OK ')").execute();
 						
 			}
 			if(tireCount < 4){
