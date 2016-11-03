@@ -1,3 +1,4 @@
+package messages;
 
 
 import java.io.IOException;
@@ -74,10 +75,11 @@ public class CreatePostServlet extends HttpServlet {
 			}
 		}
 		System.out.println("Deleted Post ID " + postId);
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		String ctx = request.getContextPath();
-		response.getWriter().append("<br><a href='" + ctx + "/minitgoat/Welcome'>Read Posts</a> ");
-		response.getWriter().append("<br><a href='" + ctx + "/minitgoat'>HOME</a> ");
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		//String ctx = request.getContextPath();
+		//response.getWriter().append("<br><a href='" + ctx + "/minitgoat/Welcome'>Read Posts</a> ");
+		//response.getWriter().append("<br><a href='" + ctx + "/minitgoat'>HOME</a> ");
+		response.sendRedirect("Welcome");
 	}
 
 	/**
@@ -121,9 +123,10 @@ public class CreatePostServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		response.getWriter().append("<br><a href='/minitgoat/Welcome'>Read Posts</a> ");
-		response.getWriter().append("<br><a href='/minitgoat'>HOME</a> ");
+		response.sendRedirect("Welcome");
+//		response.getWriter().append("Served at: ").append(request.getContextPath());
+	//	response.getWriter().append("<br><a href='/minitgoat/Welcome'>Read Posts</a> ");
+	//	response.getWriter().append("<br><a href='/minitgoat'>HOME</a> ");
 	}
 
 }
