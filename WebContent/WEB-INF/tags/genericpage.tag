@@ -5,14 +5,14 @@
 <html>
 	<head>
 		<title>MNGoat</title>
-		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 	</head>
   <body>
     <div id="pageheader">
 		<a href="${pageContext.request.contextPath}">
-			<img height="100" src="images/goat22.png"><img height="100" src="images/goat22.png">
-			<img height="100" src="images/goat22.png"><img height="100" src="images/goat22.png">
-			<img height="100" src="images/goat22.png"><img height="100" src="images/goat22.png">
+			<img height="100" src="${pageContext.request.contextPath}/images/goat22.png"><img height="100" src="${pageContext.request.contextPath}/images/goat22.png">
+			<img height="100" src="${pageContext.request.contextPath}/images/goat22.png"><img height="100" src="${pageContext.request.contextPath}/images/goat22.png">
+			<img height="100" src="${pageContext.request.contextPath}/images/goat22.png"><img height="100" src="${pageContext.request.contextPath}/images/goat22.png">
 		</a>
 			<h4>
 				<a href="${pageContext.request.contextPath}">HOME</a>

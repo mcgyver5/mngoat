@@ -2,3 +2,4 @@ User-agent: *
 Disallow: /goat/
 Disallow: /mnit/
 Disallow: /tmp/
+Disallow: /experiments/

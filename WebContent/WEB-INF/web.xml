@@ -9,7 +9,6 @@
     <param-value>tmpfiles</param-value>
   </context-param>
   <error-page>
-   <!--  <error-code>404</error-code>--> 
     <location>/ErrorHandler</location>
   </error-page>
   <security-constraint>
