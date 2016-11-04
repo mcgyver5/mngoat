@@ -12,32 +12,33 @@ import java.util.List;
 import beans.BikeTire;
 
 public class BikeTireDAOImpl implements BikeTireDAO  {
-
+	DaoManager dao;
+	Connection conn;
 	public BikeTireDAOImpl() throws Exception {
+		
 		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	private Connection getConnection() {
-		Connection conn = null;
-		try{
-			Class.forName("org.hsqldb.jdbcDriver");
-			conn = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/bikes", "sa", ""); 
-		} catch (SQLException | ClassNotFoundException sqle){
-			sqle.printStackTrace();
+		dao = new DaoManager();
+		try {
+			conn = dao.getConnection();
+			System.out.println("Created conn");
+		} catch (Exception e){
+			e.printStackTrace();
 		}
-		return conn;
 	}
+	
 	
 	@Override
 	public List<BikeTire> findAll() {
+		
 		List<BikeTire> list = new ArrayList<>();
-        try (Connection conn = getConnection();
+        try { 
              Statement s = conn.createStatement();
-             ResultSet rs = s.executeQuery("select * from tire")) { 
+             ResultSet rs = s.executeQuery("select * from tire"); 
             while (rs.next()) {
                 list.add(processRow(rs));
             }
+            dao.cleanup(conn, rs);
+            
             return list;
         } catch (SQLException e) {
             throw new RuntimeException(e.getMessage(), e); 
@@ -78,7 +79,7 @@ public class BikeTireDAOImpl implements BikeTireDAO  {
 	@Override
 	public boolean insertBikeTire(BikeTire tire) {
 		
-		Connection conn = getConnection();
+		
 		try {
 
 			PreparedStatement stmt = conn.prepareStatement("insert into tire "
@@ -96,7 +97,7 @@ public class BikeTireDAOImpl implements BikeTireDAO  {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+		dao.cleanupConn(conn);
 		return true;
 	}
 
@@ -113,7 +114,6 @@ public class BikeTireDAOImpl implements BikeTireDAO  {
 	}
 	
 	public boolean deleteByID(int id){
-		Connection conn = getConnection();
 		try {
 			PreparedStatement stmt = conn.prepareStatement("delete from tire where id = ?");
 			stmt.setInt(1, id);
@@ -122,22 +122,27 @@ public class BikeTireDAOImpl implements BikeTireDAO  {
 			e.printStackTrace();
 			return false;
 		}
+		//dao.cleanupConn(conn);
 		return true;
 	}
 	
 	public List<BikeTire> findByLike(String searchString) {
 		List<BikeTire> list = new ArrayList<>();
-        try (Connection conn = getConnection();
-             Statement s = conn.createStatement();
-             ResultSet rs = s.executeQuery("select * from tire where tire_name like '%" + searchString + "%'")) { 
+		
+		try {
+			Connection conn = dao.getConnection();
+            Statement s = conn.createStatement();
+            ResultSet rs = s.executeQuery("select * from tire where tire_name like '%" + searchString + "%'");  
             while (rs.next()) {
                 list.add(processRow(rs));
             }
+            dao.cleanup(conn, rs);
+            
             return list;
-        } catch (SQLException e) {
+           } catch (SQLException e) {
             throw new RuntimeException(e.getMessage(), e); 
-        }
+           }
 		
-	}
+		}
 
 }

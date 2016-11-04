@@ -2,42 +2,42 @@ package dao;
 
 import java.util.List;
 
-import beans.BikeTire;
+import beans.Post;
 
-public class BikeTireDAOImp implements BikeTireDAO{
+public class PostDAOImpl implements PostDAO {
 
 	@Override
-	public List<BikeTire> findAll() {
+	public List<Post> findAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<BikeTire> findById() {
+	public List<Post> findById() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<BikeTire> findByName() {
+	public List<Post> findByName() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public boolean insertBikeTire(BikeTire bikeTire) {
+	public boolean insertPost(Post post) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean updateBikeTire(BikeTire bikeTire) {
+	public boolean updatePost(Post post) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean deleteBikeTire(BikeTire bikeTire) {
+	public boolean deletePost(Post post) {
 		// TODO Auto-generated method stub
 		return false;
 	}

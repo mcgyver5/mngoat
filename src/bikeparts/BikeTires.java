@@ -29,19 +29,16 @@ public class BikeTires extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
-		if(request.getParameter("action") != null){
-			String action = request.getParameter("action");
-			if(action.equals("delete")){
-				
-			}
-		}
 		
 		BikeTireDAOImpl btdao = null;
-		try {
-			btdao = new BikeTireDAOImpl();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		
+			try {
+				btdao = new BikeTireDAOImpl();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	
 		List<BikeTire> tires = null;
 		
 		if(request.getParameter("action") != null){

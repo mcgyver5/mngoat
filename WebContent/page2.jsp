@@ -6,6 +6,7 @@
 	<%@ page import="org.owasp.esapi.*" %>
 	
 <% 
+
 String result = request.getParameter("arch"); 	
 	String result2 = ESAPI.encoder().encodeForHTML(result);
 	request.setAttribute("result2",result2);

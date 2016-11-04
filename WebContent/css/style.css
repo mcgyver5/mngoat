@@ -99,6 +99,20 @@ h2 {
 	text-align:center;
 }
 
+h3 {
+	font-size:40px;
+	line-height:1.2em;
+	font-weight:normal;
+	color:#a71f1f;
+	text-align:center;
+}
+h4 {
+	font-size:40px;
+	line-height:1.2em;
+	font-weight:normal;
+	color:#a71f1f;
+	text-align:center;
+}
 
 /*===== content =====*/
 #content .nav {
