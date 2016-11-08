@@ -10,7 +10,17 @@
 </head>
 <body>
  <%@ include file="adminHeader.jsp" %>
+<div>
+	<form action="UserList" name = "searchForm" method="POST">
+		Search By username:<input type="text" name="userName"><br>
+		<!--  OR: Search By name:<input type="text" name="fullName"><br> -->
+		<input type="submit" value="search">
+	
+	</form>
+</div>
 <table>
+
+
  <tr>
           <th>ID</th>
           <th>Name</th>

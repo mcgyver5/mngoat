@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>mngoat</groupId>
   <artifactId>mngoat</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.0.2</version>
   <packaging>war</packaging>
   <name>mngoat</name>
   <description>purposely insecure web application</description>
@@ -26,10 +26,17 @@
     <artifactId>jsoup</artifactId>
     <version>1.9.2</version>
 </dependency>
+   <!-- https://mvnrepository.com/artifact/org.apache.sanselan/sanselan -->
+<dependency>
+    <groupId>org.apache.sanselan</groupId>
+    <artifactId>sanselan</artifactId>
+    <version>0.97-incubator</version>
+</dependency>
    
   </dependencies>
   <build>
     <sourceDirectory>src</sourceDirectory>
+    
     <resources>
       <resource>
         <directory>esapi</directory>
@@ -39,6 +46,18 @@
       </resource>
     </resources>
     <plugins>
+    <plugin>
+              <groupId>org.owasp</groupId>
+              <artifactId>dependency-check-maven</artifactId>
+              <version>1.4.4</version>
+              <executions>
+                  <execution>
+                      <goals>
+                          <goal>check</goal>
+                      </goals>
+                  </execution>
+              </executions>
+            </plugin>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.5.1</version>
@@ -47,6 +66,16 @@
           <target>1.8</target>
         </configuration>
       </plugin>
+   <plugin>  
+		 <groupId>org.apache.tomcat.maven</groupId>  
+		 <artifactId>tomcat7-maven-plugin</artifactId>  
+		 <version>2.2</version>  
+		 <configuration>  
+		  <url>http://localhost:8080/manager/html</url>  
+		  <server>Tomcat8</server>    
+		  
+		 </configuration>   
+	</plugin>   
       <plugin>
         <artifactId>maven-war-plugin</artifactId>
         <version>2.6</version>
