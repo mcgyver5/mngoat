@@ -54,10 +54,10 @@ public class CreateUser extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Connection connection = null;
 		String username = request.getParameter("username");
-		String password = request.getParameter("password");
+		String xxxyyyzzz = request.getParameter("password");
 		String role = request.getParameter("role");
 		User user = new User();
-		user.setPassword(password);
+		user.setPassword(xxxyyyzzz);
 		user.setUserName(username);
 		user.setUserRole(role);
 		UserDAOImpl udao = new UserDAOImpl();
