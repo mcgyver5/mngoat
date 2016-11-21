@@ -32,7 +32,13 @@
     <artifactId>sanselan</artifactId>
     <version>0.97-incubator</version>
 </dependency>
-   
+
+<!-- https://mvnrepository.com/artifact/org.apache.struts/struts2-core -->
+<dependency>
+    <groupId>org.apache.struts</groupId>
+    <artifactId>struts2-core</artifactId>
+    <version>2.3.1.1</version>
+</dependency>
   </dependencies>
   <build>
     <sourceDirectory>src</sourceDirectory>
@@ -50,14 +56,55 @@
               <groupId>org.owasp</groupId>
               <artifactId>dependency-check-maven</artifactId>
               <version>1.4.4</version>
+
+              <configuration>
+              	<format>xml</format>
+                <failBuildOnCVSS>8</failBuildOnCVSS>
+              </configuration>
+              
+
               <executions>
                   <execution>
+                  <phase>package</phase>
                       <goals>
                           <goal>check</goal>
                       </goals>
                   </execution>
               </executions>
-            </plugin>
+      </plugin>
+	  <plugin>
+     <groupId>com.github.cjnygard</groupId>
+     <artifactId>rest-maven-plugin</artifactId>
+     <version>0.1.4</version>
+     <executions>
+       <execution>
+         <id>create_team_test</id>
+         <phase>package</phase>
+         <goals>
+           <goal>rest-request</goal>
+         </goals>
+         <configuration>
+			<method>POST</method>
+           <endpoint>http://localhost:8080/threadfix/</endpoint>
+           <resource>rest/teams/new?apiKey=3wo7nR3IfBopdyZ0eTLkaQy09EfLWjdoO7ZTMTcRgZ8</resource>
+           <queryParams>
+			 <name>teamMystic3</name>
+           </queryParams>
+           
+           <requestType>
+             <type>application</type>
+             <subtype>json</subtype>
+           </requestType>
+           <responseType>
+             <type>application</type>
+             <subtype>json</subtype>
+           </responseType>
+           <outputDir>restresults/json</outputDir>        
+			<outputFilename>results.json</outputFilename>
+         </configuration>
+       </execution>
+     </executions>
+   </plugin>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.5.1</version>

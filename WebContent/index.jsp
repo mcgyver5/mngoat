@@ -18,6 +18,7 @@
 	<li><a href=page2.jsp?arch=5>Page 2:  Parameter arch protected by ESAPI</a></li>
 	<li><a href=page3.jsp>JSP page3  (Protected by input validation)</a></li>
 	<li><a href=divide_by_zero.jsp>Error Page</a></li>
+		<li><a href="page4.jsp">JSP Page 4</a></li>
 	</ul>
 	<br>
 	<br>
