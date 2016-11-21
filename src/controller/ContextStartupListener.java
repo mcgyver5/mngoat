@@ -80,6 +80,9 @@ public class ContextStartupListener implements ServletContextListener, ServletCo
 			Class.forName("org.hsqldb.jdbcDriver");
 			connection = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/bikes", "sa", ""); // can through sql exception
 			//connection.prepareStatement("drop table tire if exists;").execute();
+			connection.prepareStatement("create table if not exists hint (hint_id integer, hint_text varchar(500),"
+					+ "page_id varchar(100), hint_step integer").execute();
+
 			connection.prepareStatement("create table if not exists tire (id integer, tire_vendor varchar(100), "
 					+ "tire_name varchar(100) not null, "
 					+ "width_cm integer, "
