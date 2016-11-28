@@ -6,6 +6,8 @@ if(request.getParameter("lastName") !=null){
 	if(lastName.equals("mcguire")){
 		out.println("Hello Tim");
 	} else {
+		// filter out the string "script":
+		lastName = lastName.replaceAll("script","");
 		out.println(lastName);
 	}
 } else {

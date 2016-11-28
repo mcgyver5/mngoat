@@ -132,7 +132,12 @@ public class BikeTireDAOImpl implements BikeTireDAO  {
 		try {
 			Connection conn = dao.getConnection();
             Statement s = conn.createStatement();
-            ResultSet rs = s.executeQuery("select * from tire where tire_name like '%" + searchString + "%'");  
+            String query = "select * from tire where tire_name like '%" + searchString + "%'";
+            System.out.println(query);
+            System.out.println("=================================================");
+            
+            ResultSet rs = s.executeQuery(query);
+            
             while (rs.next()) {
                 list.add(processRow(rs));
             }
