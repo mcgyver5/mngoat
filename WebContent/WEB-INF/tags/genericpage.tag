@@ -7,7 +7,7 @@
 		<title>MNGoat</title>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 	</head>
-  <body>
+  <body class="menu">
     <div id="pageheader">
 		<a href="${pageContext.request.contextPath}">
 			<img height="100" src="${pageContext.request.contextPath}/images/goat22.png"><img height="100" src="${pageContext.request.contextPath}/images/goat22.png">

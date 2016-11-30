@@ -12,6 +12,19 @@ body {
 	line-height:1.5em;
 	color:#8b8080;
 }
+.menutext {
+	line-height:1.0em;
+	font-weight:normal;
+	color:#a77777;
+	text-align:center;
+}
+body.menu {
+	background:url(../images/tail-top.jpg) left top repeat-x #140100;
+	font-family:Georgia, "Times New Roman", Times, serif;
+	font-size:100%; 
+	line-height:1.5em;
+	color:#8b8080;
+}
 
 img {
 	border:0; 
@@ -112,6 +125,13 @@ h4 {
 	font-weight:normal;
 	color:#a71f1f;
 	text-align:center;
+}
+h4.menu {
+	font-size:20px;
+	line-height:1.0em;
+	font-weight:normal;
+	color:#a77777;
+	text-align:left;
 }
 
 /*===== content =====*/
