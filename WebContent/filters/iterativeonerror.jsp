@@ -7,7 +7,16 @@ if(request.getParameter("lastName") !=null){
 		out.println("Hello Tim");
 	} else {
 		// filter out the string "script":
-		lastName = lastName.replaceAll("script","");
+		while(lastName.contains("script")){
+			lastName = lastName.replaceAll("script","");
+			
+			
+			//out.println(lastName);
+		}
+		if(lastName.contains("on")){
+			int end = lastName.indexOf("on");
+			lastName= lastName.substring(0,end);
+		}
 		out.println(lastName);
 	}
 } else {
@@ -19,7 +28,7 @@ if(request.getParameter("lastName") !=null){
 <script src="/mngoat/javascript/jquery-1.6.js"></script>
 
 
-<h2>This page filters script tags by not allowing the string "script"</h2>
+<h2>This page iteratively filters script tags, removing string "script"</h2>
 
 <br>
 
