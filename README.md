@@ -1,5 +1,5 @@
 # mngoat
-purposely insecure web application
+purposely insecure Java web application
 
 1) This comes with an embedded database (HSQLDB)
 
