@@ -29,7 +29,7 @@ public class BikeTireDAOImpl implements BikeTireDAO  {
 	
 	@Override
 	public List<BikeTire> findAll() {
-		
+		System.out.println("FIND ALL BIKE TIRES!!!");
 		List<BikeTire> list = new ArrayList<>();
         try { 
              Statement s = conn.createStatement();

@@ -84,7 +84,7 @@
 	  <plugin>	 
 	  	<groupId>com.h3xstream.retirejs</groupId>
 	  	 <artifactId>retirejs-maven-plugin</artifactId>
-	  	 <version>2.1.1-SNAPSHOT</version>
+	  	 <version>2.1.0</version>
 	  	 <configuration>
 	  	 	<fileFormat>xml</fileFormat>
 	  	 </configuration>

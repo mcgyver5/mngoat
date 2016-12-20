@@ -1,8 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
-
-<t:genericpage>
-
 <%! 
    public String stripParameter(String param) { 
 
@@ -47,6 +44,9 @@ if(request.getParameter("myguess") !=null){
 }
 
 %>
+<t:genericpage>
+
+
 <hr>
 See how good you are at guessing random numbers (between 1 and 100)
 <form name=guessForm action=page3.jsp>

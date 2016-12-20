@@ -36,13 +36,17 @@ public class UserList extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//System.out.println("Wonderful method");
 		UserDAOImpl udao = new UserDAOImpl();
+		//System.out.println("Wonderful method....");
 		ArrayList userList = (ArrayList) udao.findAll();
+		//System.out.println("Wonderful method43");
 		 request.setAttribute("userList", userList);
+		// System.out.println("Wonderful method45");
         // Forward to /WEB-INF/views/productListView.jsp
         RequestDispatcher dispatcher = request.getServletContext()
                 .getRequestDispatcher("/admin/users.jsp");
-   
+       // System.out.println("Wonderful method. HI?");
         dispatcher.forward(request, response);
 	}
 

@@ -51,7 +51,7 @@ public class RetrievePicture extends HttpServlet {
 			      
 			      if(model != null){
 			    	  String s = model.getStringValue();
-			    	  System.out.println(s + " SHOULD BE THE MODEL");
+			    	 // System.out.println(s + " SHOULD BE THE MODEL");
 			      }
 			
 			      IImageMetadata metadata2 = Sanselan.getMetadata(file);
@@ -61,7 +61,7 @@ public class RetrievePicture extends HttpServlet {
 
 			  		if (exif != null) {
 			  			outputSet = exif.getOutputSet();
-			  			System.out.println(exif);
+			  			//System.out.println(exif);
 			  		}
 			  	}
 			      
