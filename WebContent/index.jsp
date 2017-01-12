@@ -32,7 +32,7 @@
 	<ul>
 	<li><a href=bikeparts.jsp>Browse pictures of bike parts  (Not Protected)</a></li>
 	<li><a href=bikepartsprotected.jsp>Browse pictures of bike parts  (Protected by Content Security Policy)</a></li>
-	<li><a href="BikeTires">See some information about bicycle tires</a></li>	
+	<li><a href="BikeParts">See some information about bicycle partss</a></li>	
 	</ul>
 	<br>
 	<br>

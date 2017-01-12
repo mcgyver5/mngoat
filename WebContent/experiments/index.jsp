@@ -25,7 +25,7 @@
 	<ul>
 	<li><a href=bikeparts.jsp>simple jsp with IFrame to https (browser will warn the user)</a></li>
 	<li><a href=bikepartsprotected.jsp>Servlet will act as a kind of proxy and manage the interaction with the other site (essentially stripping the https out)grab the site and render it as its own.</a></li>
-	<li><a href="BikeTires">CORS approach between http and https</a></li>	
+	<li><a href="BikeParts">CORS approach between http and https</a></li>	
 	</ul>
 	<br>
 	<br>

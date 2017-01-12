@@ -1,10 +1,26 @@
 package beans;
 
+import java.util.ArrayList;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class User {
+	@Id
+	@GeneratedValue
 	int userId;
 	String userName;
 	String password;
 	String userRole;
+	ArrayList<Bike> bikes;
+	
+	void addBike(Bike bike){
+		// called when user saves a bike
+		this.bikes.add(bike);
+	}
+	// one user has many bikes.
 	public int getUserId() {
 		return userId;
 	}

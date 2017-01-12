@@ -16,49 +16,49 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import dao.BikeTireDAOImpl;
-import beans.BikeTire;
+import dao.BikePartDAOImpl;
+import beans.BikePart;
 
-@WebServlet(urlPatterns={"/BikeTires", "/CreateTire","/DeleteTire"})
-public class BikeTires extends HttpServlet {
+@WebServlet(urlPatterns={"/BikeParts", "/CreatePart","/DeletePart"})
+public class BikeParts extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public BikeTires() {
+    public BikeParts() {
         super();
 
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 		
-		BikeTireDAOImpl btdao = null;
+		BikePartDAOImpl btdao = null;
 		
 			try {
-				btdao = new BikeTireDAOImpl();
+				btdao = new BikePartDAOImpl();
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 	
-		List<BikeTire> tires = null;
+		List<BikePart> parts = null;
 		
 		if(request.getParameter("action") != null){
 			String action = request.getParameter("action");
 			if(action.equals("delete")){
-				String tireId = request.getParameter("tireId");
-				int intId = Integer.parseInt(tireId);
+				String partId = request.getParameter("partId");
+				int intId = Integer.parseInt(partId);
 				btdao.deleteByID(intId);
 			}
 		}
 			if(request.getParameter("searchString") !=null){
 				String searchString = request.getParameter("searchString");
-				tires = btdao.findByLike(searchString);
+				parts = btdao.findByLike(searchString);
 			} else {
-				tires = btdao.findAll();
+				parts = btdao.findAll();
 			}
 	
-		request.setAttribute("tireList", tires);
+		request.setAttribute("partList", parts);
         RequestDispatcher dispatcher = request.getServletContext()
-                .getRequestDispatcher("/tireView.jsp");
+                .getRequestDispatcher("/partView.jsp");
    
         dispatcher.forward(request, response);
 	}
@@ -79,7 +79,6 @@ public class BikeTires extends HttpServlet {
 		int widthmm =0;
 		int weightg =0;
 		String intPrice = price.replace(".", "");
-		System.out.println("HERE IS PRICE STRING: " + intPrice);
 		
 		Connection connection =null;
 		try{
@@ -90,26 +89,26 @@ public class BikeTires extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		BikeTire tire = new BikeTire();
+		BikePart part = new BikePart();
 	
-		tire.setSize(widthmm);
-		tire.setCountryOfOrigin(countryOfOrigin);
-		tire.setManufacturer(manufacturer);
-		tire.setMake(make);
-		tire.setModel(model);
-		tire.setPrice(cents);
-		tire.setSize(widthmm);
-		tire.setWeight(weightg);
-		BikeTireDAOImpl btdao = null;
+		part.setSize(widthmm);
+		part.setCountryOfOrigin(countryOfOrigin);
+		part.setManufacturer(manufacturer);
+		part.setMake(make);
+		part.setModel(model);
+		part.setPrice(cents);
+		part.setSize(widthmm);
+		part.setWeight(weightg);
+		BikePartDAOImpl btdao = null;
 		try {
-			btdao = new BikeTireDAOImpl();
+			btdao = new BikePartDAOImpl();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		btdao.insertBikeTire(tire);
+		btdao.insertBikePart(part);
 
-        response.sendRedirect("BikeTires");
+        response.sendRedirect("BikeParts");
 	}
 
 }

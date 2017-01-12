@@ -4,31 +4,31 @@
 
 <t:genericpage>
 
-<form action = "BikeTires" method="GET">
+<form action = "BikeParts" method="GET">
 Search String: <input type = "text" name="searchString">
 <input type="submit" vale = "search">
 </form>
-Tires:
+Parts:
  <table border="1" cellpadding="5" cellspacing="1" >
        <tr>
           <th>ID - Link</th>
           <th>Vendor</th>
-          <th>Tire</th>
+          <th>Part</th>
           <th>Size</th>
           <th>Price</th>
 			<th>Delete</th>
 
        </tr>
-       <c:forEach items="${tireList}" var="tire" >
+       <c:forEach items="${partList}" var="part" >
           <tr>
-             <td>${tire.id}</td>
-             <td>${tire.make}</td>
-             <td>${tire.model}</td>
-             <td>${tire.size}</td>
-             <td>${tire.price}</td>
-             <td><a href="${pageContext.request.contextPath}/DeleteTire?action=delete&tireId=${tire.id}">Delete</a>
+             <td><a href="${pageContext.request.contextPath}/PartDetail?partId=${part.id}">${part.id}</a></td>
+             <td>${part.make}</td>
+             <td>${part.model}</td>
+             <td>${part.size}</td>
+             <td>${part.price}</td>
+             <td><a href="${pageContext.request.contextPath}/DeletePart?action=delete&partId=${part.id}">Delete</a>
           </tr>
        </c:forEach>
     </table>
-    <a href="${pageContext.request.contextPath}/tireForm.jsp">Create new Tire Entry</a>
+    <a href="${pageContext.request.contextPath}/partForm.jsp">Create new Part Entry</a>
 </t:genericpage>

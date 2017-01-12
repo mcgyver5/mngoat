@@ -3,7 +3,7 @@
 
 <t:genericpage>
 
-<form name="tireForm" action="CreateTire" method="POST">
+<form name="partForm" action="CreatePart" method="POST">
 Brand: <input type="text" name="brand"><br>
 Model: <input type="text" name="model"><br>
 Manufacturer: <input type="text" name="model"><br>

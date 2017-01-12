@@ -1,7 +1,7 @@
 package beans;
 
-public class BikeTire {
-	public BikeTire(int id,String make, String model, int size, int price) {
+public class BikePart {
+	public BikePart(int id,String make, String model, int size, int price) {
 		super();
 		this.id = id;
 		this.make = make;
@@ -66,7 +66,7 @@ public class BikeTire {
 	private int weight;
 	private String manufacturer;
 	private String countryOfOrigin;
-	public BikeTire() {
+	public BikePart() {
 		// TODO Auto-generated constructor stub
 	}
 
