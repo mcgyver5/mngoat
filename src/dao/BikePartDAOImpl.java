@@ -9,12 +9,12 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import beans.BikeTire;
+import beans.BikePart;
 
-public class BikeTireDAOImpl implements BikeTireDAO  {
+public class BikePartDAOImpl implements BikePartDAO  {
 	DaoManager dao;
 	Connection conn;
-	public BikeTireDAOImpl() throws Exception {
+	public BikePartDAOImpl() throws Exception {
 		
 		super();
 		dao = new DaoManager();
@@ -28,9 +28,8 @@ public class BikeTireDAOImpl implements BikeTireDAO  {
 	
 	
 	@Override
-	public List<BikeTire> findAll() {
-		System.out.println("FIND ALL BIKE TIRES!!!");
-		List<BikeTire> list = new ArrayList<>();
+	public List<BikePart> findAll() {
+		List<BikePart> list = new ArrayList<>();
         try { 
              Statement s = conn.createStatement();
              ResultSet rs = s.executeQuery("select * from tire"); 
@@ -45,39 +44,39 @@ public class BikeTireDAOImpl implements BikeTireDAO  {
         }
 	}
 
-	private BikeTire processRow(ResultSet rs) {
+	private BikePart processRow(ResultSet rs) {
 			int id;
-			BikeTire tire = null;
+			BikePart part = null;
 			try {
 				id = rs.getInt(1);
 				String vendor = rs.getString(2);
 				String tireName = rs.getString(3);
 				int size = rs.getInt(4);
 				int cost = rs.getInt(5);
-				tire = new beans.BikeTire(id,vendor,tireName,size,cost);
+				part = new beans.BikePart(id,vendor,tireName,size,cost);
 			} catch (SQLException e) {
 				
 				e.printStackTrace();
 			}
 			
-			return tire;
+			return part;
 //			System.out.println(String.format("ID: %1d, Name: %1s", rs.getInt(1), rs.getString(2)));
 	}
 
 	@Override
-	public List<BikeTire> findById() {
+	public List<BikePart> findById() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<BikeTire> findByName() {
+	public List<BikePart> findByName() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public boolean insertBikeTire(BikeTire tire) {
+	public boolean insertBikePart(BikePart part) {
 		
 		
 		try {
@@ -85,13 +84,13 @@ public class BikeTireDAOImpl implements BikeTireDAO  {
 			PreparedStatement stmt = conn.prepareStatement("insert into tire "
 					+ "(id, tire_vendor, tire_name, tire_manufacturer, country_of_origin, width_cm, cost, tire_weight)" 
 					+ "values (NEXT VALUE FOR tireseq, ?, ?, ?, ?, ?, ?, ?);");
-			stmt.setString(1, tire.getMake());
-			stmt.setString(2, tire.getModel());
-			stmt.setString(3, tire.getManufacturer());
-			stmt.setString(4, tire.getCountryOfOrigin());
-			stmt.setInt(5, tire.getSize());
-			stmt.setInt(6,tire.getPrice());
-			stmt.setInt(7, tire.getWeight());
+			stmt.setString(1, part.getMake());
+			stmt.setString(2, part.getModel());
+			stmt.setString(3, part.getManufacturer());
+			stmt.setString(4, part.getCountryOfOrigin());
+			stmt.setInt(5, part.getSize());
+			stmt.setInt(6,part.getPrice());
+			stmt.setInt(7, part.getWeight());
 			
 			stmt.execute();
 		} catch (SQLException e) {
@@ -102,13 +101,13 @@ public class BikeTireDAOImpl implements BikeTireDAO  {
 	}
 
 	@Override
-	public boolean updateBikeTire(BikeTire bikeTire) {
+	public boolean updateBikePart(BikePart bikePart) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean deleteBikeTire(BikeTire bikeTire) {
+	public boolean deleteBikePart(BikePart bikePart) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -126,8 +125,8 @@ public class BikeTireDAOImpl implements BikeTireDAO  {
 		return true;
 	}
 	
-	public List<BikeTire> findByLike(String searchString) {
-		List<BikeTire> list = new ArrayList<>();
+	public List<BikePart> findByLike(String searchString) {
+		List<BikePart> list = new ArrayList<>();
 		
 		try {
 			Connection conn = dao.getConnection();
@@ -149,5 +148,23 @@ public class BikeTireDAOImpl implements BikeTireDAO  {
            }
 		
 		}
+
+
+	public BikePart findByID(String partId) {
+		BikePart part = null;
+		int id = Integer.parseInt(partId);
+		try { 
+            Statement s = conn.createStatement();
+            ResultSet rs = s.executeQuery("select * from tire where id= " + id); 
+           if (rs.next()){
+        	   part = processRow(rs);
+           }
+           dao.cleanup(conn, rs);
+           
+           return part;
+       } catch (SQLException e) {
+           throw new RuntimeException(e.getMessage(), e); 
+       }
+	}
 
 }

@@ -1,14 +1,14 @@
 package dao;
 import java.util.List;
-import beans.BikeTire;
+import beans.BikePart;
 
-public interface BikeTireDAO {
+public interface BikePartDAO {
 
-    List<BikeTire> findAll();
-    List<BikeTire> findById();
-    List<BikeTire> findByName();
-    boolean insertBikeTire(BikeTire bikeTire);
-    boolean updateBikeTire(BikeTire bikeTire);
-    boolean deleteBikeTire(BikeTire bikeTire);
+    List<BikePart> findAll();
+    List<BikePart> findById();
+    List<BikePart> findByName();
+    boolean insertBikePart(BikePart bikePart);
+    boolean updateBikePart(BikePart bikePart);
+    boolean deleteBikePart(BikePart bikePart);
 
 }
