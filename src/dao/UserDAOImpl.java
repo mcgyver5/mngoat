@@ -1,14 +1,13 @@
 package dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import beans.BikePart;
 import beans.User;
 
 public class UserDAOImpl implements UserDAO {
@@ -26,7 +25,7 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public List<User> findAll() {		
 		String query = "";
-		query = "select user_id, username, password, user_role  from users;";
+		query = "select user_id, username, first_name, last_name, email_address, password, user_role  from users;";
 		return createUserList(query);
 	}
 
@@ -56,8 +55,9 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public List<User> findByName(String name) {
-		String query = "";
-		query = "select user_id, username, password, user_role  from users where username= '" + name + "';";
+		String query = "select * from users where username='" + name + "';";
+		//query = "select user_id, username, first_name, last_name, email_address, password, user_role from users where username = '" + name + "';";
+		System.out.println("find by name query = " + query);
 		return createUserList(query);
 	}
 	
@@ -65,18 +65,35 @@ public class UserDAOImpl implements UserDAO {
 		int id;
 		User user = null;
 		try {
+			ResultSetMetaData rsmd = rs.getMetaData();
+
+			int columnCount = rsmd.getColumnCount();
+			for(int x=1; x <= columnCount; x++ ){
+				System.out.println(rsmd.getColumnLabel(x));
+			}
 			id = rs.getInt(1);
-			String username = rs.getString(2);
-			String password = rs.getString(3);
-			String role = rs.getString(4);
-			user = new User(id,username,password,role);
-			System.out.println("adding user: " + user);
-		} catch (SQLException e) {
+			String username = rs.getString(rs.findColumn("USERNAME"));
+			String firstName = rs.getString(rs.findColumn("FIRST_NAME"));
+			String lastName = rs.getString(rs.findColumn("LAST_NAME"));
+			String email = rs.getString(rs.findColumn("EMAIL_ADDRESS"));
+			String password = rs.getString(rs.findColumn("PASSWORD"));
+			String role = rs.getString(rs.findColumn("USER_ROLE"));
+			user = new User(id, username, firstName, lastName, email, password, role); 
 			
+			System.out.println("in process row adding user to : " + user);
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
 		return user;
+		/*
+		 * String userName, 
+			String firstName,
+			String lastName,
+			String password, 
+			String emailAddress,
+			String userRole) {
+		 */
 //		System.out.println(String.format("ID: %1d, Name: %1s", rs.getInt(1), rs.getString(2)));
 }
 	@Override
@@ -85,15 +102,18 @@ public class UserDAOImpl implements UserDAO {
 		PreparedStatement stmt;
 		try {
 			stmt = conn.prepareStatement("insert into users "
-					+ "(user_id, username, password, user_role)" 
-					+ "values (NEXT VALUE FOR tireseq, ?, ?, ?);");
+					+ "(user_id, username, password, first_name, last_name, email_address, user_role)" 
+					+ "values (NEXT VALUE FOR tireseq, ?, ?, ?, ?, ?, ?);");
 		
 			stmt.setString(1, user.getUserName());
 			stmt.setString(2, user.getPassword());
-			stmt.setString(3, user.getUserRole());
+			stmt.setString(3, user.getFirstName());
+			stmt.setString(4, user.getLastName());
+			stmt.setString(5, user.getEmailAddress());
+			stmt.setString(6, user.getUserRole());
 			stmt.execute();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			System.out.println("INSERT USER DID NOT WORK!");
 			e.printStackTrace();
 			return false;
 		}
@@ -127,6 +147,12 @@ public class UserDAOImpl implements UserDAO {
 		}
 		dao.cleanupConn(conn);
 		return true;
+	}
+
+	public List<User> findByNameAndPass(String username, String password) {
+		String query = "";
+		query = "select user_id, username, password, user_role, first_name, last_name, email_address from users where username= '" + username + "' and password= '" + password + "';";
+		return createUserList(query);
 	}
 
 }

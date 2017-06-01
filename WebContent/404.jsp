@@ -11,7 +11,7 @@
 	<div id="main">
 		<!-- header -->
 		<div id="header">
-			<h1>We bet this is not what you expected to see here!<span>404 error - not found.</span></h1>
+			<h1>We bet this is not what you expected to see here!<span>Application Had an Error</span></h1>
 		</div>
 		<!-- content -->
 		<div id="content">
@@ -19,7 +19,7 @@
          	<li class="home"><a href="${pageContext.request.contextPath}">Home Page</a></li>
         
          </ul>
-         <p>The page you requested, <%=request.getParameter("url") %> was not found</p>
+         <p>The page you requested was: <%=request.getParameter("url") %></p>
          <h2>Happy Halloween!</h2>
 		</div>
 		<!-- footer -->

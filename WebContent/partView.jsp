@@ -4,12 +4,15 @@
 
 <t:genericpage>
 
-<form action = "BikeParts" method="GET">
-Search String: <input type = "text" name="searchString">
-<input type="submit" vale = "search">
+<form class="w3-container w3-padding-16" action = "BikeParts" method="GET">
+<br>
+<label class="w3-text-blue"><b>Search String:</b></label> <input class="w3-input w3-border" type = "text" name="searchString">
+<input class="w3-btn w3-blue" type="submit" value = "search">
 </form>
-Parts:
- <table border="1" cellpadding="5" cellspacing="1" >
+<div></div>
+<p   class="w3-blue w3-padding-8" style="text-shadow:1px 1px 0 #444"> You Searched for: <span class="w3-text-orange">"${searchString}"</span>
+<p  class="w3-blue" style="text-shadow:1px 1px 0 #444"> Here is what we found:</p>
+ <table class="w3-table-all" >
        <tr>
           <th>ID - Link</th>
           <th>Vendor</th>
@@ -30,5 +33,10 @@ Parts:
           </tr>
        </c:forEach>
     </table>
-    <a href="${pageContext.request.contextPath}/partForm.jsp">Create new Part Entry</a>
+    <h4>>Hint:  SQL Query ends up looking like: select * from tire where tire_name like '%hhh%'
+    </h4>
+    <br>
+    
+    <a href="${pageContext.request.contextPath}/partForm.jsp"><button class="w3-button w3-khaki">Create new Part Entry</button></a>
+    
 </t:genericpage>

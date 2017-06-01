@@ -73,14 +73,14 @@ public class Welcome extends HttpServlet {
 				try {
 					rs.close();
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
+
 					e.printStackTrace();
 				}
 			}
 			try {
 				connection.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
+System.out.println("COMPLETELY BOGUS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 				e.printStackTrace();
 			}
 		}

@@ -3,6 +3,8 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -34,25 +36,35 @@ public class PicturesServlet extends HttpServlet {
      * @param file
      * @return String containing make of camera used to take jpg.
      */
-	private String cameraMake(File file){
+	private Map cameraMake(File file){
 		TiffField make = null;
+		HashMap<String,String> metaDataMap = new HashMap<>();
 		try {
 			IImageMetadata metadata = Sanselan.getMetadata(file);
+			if(metadata != null){
+			for(Object x : metadata.getItems()){
+				String xString = x.toString();
+				String[] arr = xString.split(": ");
+				// make, model, time, location, Software
+				if(arr[0].contains("Software") || 
+						arr[0].toUpperCase().equals("MODEL") ||
+						arr[0].toUpperCase().equals("MAKE") ||
+						arr[0].toUpperCase().contains("CREATE DATE")){
+				metaDataMap.put(arr[0], arr[1]);
+				}
+			}
 			if (metadata instanceof JpegImageMetadata) {
 			      make = ((JpegImageMetadata) metadata).findEXIFValue(ExifTagConstants.EXIF_TAG_MAKE);
 			      ((JpegImageMetadata) metadata).dump();
-			      if(make != null){
-			    	  return make.toString();
-			      }
+			      
+			}
 			}
 			} catch (Exception e) {
 				e.printStackTrace();
-				return "";
+		
 			}
-		if(make == null){
-			return "No EXIF DATA";
-		}
-		return make.toString();
+		
+		return metaDataMap;
 	}
 	
 	/**
@@ -62,20 +74,20 @@ public class PicturesServlet extends HttpServlet {
 		File filesDir = (File) getServletContext().getAttribute("FILES_DIR_FILE");
 		File[] files = filesDir.listFiles();
 	    String fileName = "";
-	    File file = null;
-	    ArrayList fileList = new ArrayList();
-	    ArrayList cameraList = new ArrayList();
+	    ArrayList<ImageDataObj> imageList = new ArrayList<>();
+
 	    for (File f : files){
 	    	fileName = f.getName();
-	    	if(fileName.endsWith(".jpg")){
-	    		fileList.add(f);
-	    		cameraList.add(this.cameraMake(f));
-	    		file = f;
+	    	if(fileName.toUpperCase().endsWith(".JPG") || fileName.toUpperCase().endsWith(".PNG")){
+	    		Map metaDataMap = this.cameraMake(f);
+	    	
+	    		ImageDataObj ido = new ImageDataObj(f,metaDataMap);
+	    		imageList.add(ido);
 	    	}
 	    }
 	    request.setAttribute("filesDir", filesDir.getAbsolutePath());
-	    request.setAttribute("fileList",fileList);
-	    request.setAttribute("cameraList", cameraList);
+	    request.setAttribute("fileList",imageList);
+	    
         RequestDispatcher dispatcher = request.getServletContext()
                 .getRequestDispatcher("/imageView.jsp");
         dispatcher.forward(request, response);      

@@ -10,11 +10,13 @@
 
 <br>
 <c:forEach items="${fileList}" var="imageFile">
-	<img width = "300" src="RetrievePicture?fileName=${imageFile.name}"><br>
-	
-</c:forEach>
-<c:forEach items="${cameraList}" var="camera">
-	${camera}
+	<img width = "300" src="RetrievePicture?fileName=${imageFile.f.name}"><br>
+	<c:forEach items="${imageFile.metaDataMap}" var="m">
+	${m}<br>
+	</c:forEach>
 	<br>
+	<a href="DeletePicture?fileName=${imageFile.f.name}">Delete This Photo</a>	<br>
+	_________________________________________________________________________________<br>
 </c:forEach>
+
 </t:genericpage>

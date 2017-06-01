@@ -3,15 +3,9 @@
 
 <t:genericpage>
 
-<h2>JSP File Upload Page</h2>
-Three Ways:
-<br>
-To Wrong Directory
-<br>
-Contain Second Order SQL Injection
-<br>
-Contain De-Serialization Attack
-<br>
+<h2>Upload Pictures Here</h2>
+This page accepts Image Files Only.<br>
+<hr>
 
 <form action="${pageContext.request.contextPath}/FileUploadServlet" method="POST" enctype="multipart/form-data">
 <input type="file" name="filename">

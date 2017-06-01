@@ -4,6 +4,8 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/esapi"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/hello"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/WebContent"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/freemarker"/>
         <property name="java-output-path" value="/mngoat/build/classes"/>
         <property name="context-root" value="mngoat"/>
     </wb-module>

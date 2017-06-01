@@ -23,19 +23,23 @@
 
  <tr>
           <th>ID</th>
-          <th>Name</th>
           <th>username</th>
+          <th>FirstName</th>
+          <th>LastName</th>
           <th>password</th>
           <th>Role</th>
+          <th>email</th>
 		  <th>Delete</th>
        </tr>
        <c:forEach items="${userList}" var="user" >
           <tr>
              <td>${user.userId}</td>
-             <td>user</td>
              <td>${user.userName}</td>
+             <td>${user.firstName}</td>
+             <td>${user.lastName}</td>
              <td>....</td>
              <td>${user.userRole}</td>
+             <td>${user.emailAddress }
              <td><a href="DeleteUser?userId=${user.userId}&action=delete">Delete</a>
             
           </tr>

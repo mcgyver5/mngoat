@@ -10,14 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import dao.BikePartDAOImpl;
 import beans.BikePart;
-import org.apache.log4j.*;
+
 /**
  * Servlet implementation class 
  */
 @WebServlet("/PartDetail")
 public class PartDetail extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    static Logger log = Logger.getLogger(PartDetail.class.getName());
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -31,7 +31,7 @@ public class PartDetail extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String partId = request.getParameter("partId");
-		log.info("User Views Bike Part #" + partId);
+	
 		BikePartDAOImpl btdao = null;
 		
 		try {

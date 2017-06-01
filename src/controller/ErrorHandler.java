@@ -15,12 +15,12 @@ public class ErrorHandler extends HttpServlet {
 	                    HttpServletResponse response)
 	            throws ServletException, IOException
 	  {
-		  //System.out.println("Have you ever even heard of me????????????????????????????????????????");
+		  
 	      // Analyze the servlet exception       
-	      Throwable throwable = (Throwable)
-	      request.getAttribute("javax.servlet.error.exception");
-	      Integer statusCode = (Integer)
-	      request.getAttribute("javax.servlet.error.status_code");
+	      Throwable throwable = (Throwable)request.getAttribute("javax.servlet.error.exception");
+	      Integer statusCode = (Integer)request.getAttribute("javax.servlet.error.status_code");
+	      System.out.println("Here is error::::");
+	      System.out.println(request.getAttribute("javax.servlet.error.message"));
 	      String servletName = (String)
 	      request.getAttribute("javax.servlet.error.servlet_name");
 	      if (servletName == null){
@@ -35,37 +35,28 @@ public class ErrorHandler extends HttpServlet {
 	      // Set response content type
 	      response.setContentType("text/html");
 	 
-	      PrintWriter out = response.getWriter();
-		  String title = "Error/Exception Information";
-	      String docType =
-	      "<!doctype html public \"-//w3c//dtd html 4.0 " +
-	      "transitional//en\">\n";
-	      out.println(docType +
-	        "<html>\n" +
-	        "<head><title>" + title + "</title></head>\n" +
-	        "<body bgcolor=\"#f0f0f0\">\n");
+		
 
 	      if (throwable == null && statusCode == null){
-	         out.println("<h2>Error information is missing</h2>");
-	         out.println("Please return to the <a href=\"" + 
-	           response.encodeURL("http://localhost:8080/") + 
-	           "\">Home Page</a>.");
+	    	  System.out.println("Error information is missing");
+	        
 	      }else if (statusCode != null){
-	         out.println("The status code : " + statusCode);
+	    	  System.out.println("The status code : " + statusCode);
+	    	  System.out.println("Error information");
+		         System.out.println("Servlet Name : " + servletName );
+		        
+		         System.out.println("The request URI: " + requestUri );
+
 	      }else{
-	         out.println("<h2>Error information</h2>");
-	         out.println("Servlet Name : " + servletName + 
-	                             "</br></br>");
-	         out.println("Exception Type : " + 
-	                             throwable.getClass( ).getName( ) + 
-	                             "</br></br>");
-	         out.println("The request URI: " + requestUri + 
-	                             "<br><br>");
-	         out.println("The exception message: " + 
+	         System.out.println("Error information");
+	         System.out.println("Servlet Name : " + servletName );
+	         System.out.println("Exception Type : " + 
+	                             throwable.getClass( ).getName( ) );
+	         System.out.println("The request URI: " + requestUri);
+	         System.out.println("The exception message: " + 
 	                                 throwable.getMessage( ));
 	      }
-	      out.println("</body>");
-	      out.println("</html>");
+
 	      String ctx = request.getContextPath();
 	      response.sendRedirect(ctx+ "/404.jsp?url="+ requestUri);
 	  }
@@ -73,6 +64,7 @@ public class ErrorHandler extends HttpServlet {
 	  public void doPost(HttpServletRequest request,
 	                     HttpServletResponse response)
 	      throws ServletException, IOException {
+		  System.out.println("error in post to post");
 	     doGet(request, response);
 	  }
 }

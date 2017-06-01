@@ -49,13 +49,17 @@ public class BikeParts extends HttpServlet {
 				btdao.deleteByID(intId);
 			}
 		}
-			if(request.getParameter("searchString") !=null){
-				String searchString = request.getParameter("searchString");
+		String searchString = "";
+			if(request.getParameter("searchString") !=null && request.getParameter("searchString").length() > 0){
+		
+				searchString = request.getParameter("searchString");
+				
 				parts = btdao.findByLike(searchString);
 			} else {
+				searchString = "Everything";
 				parts = btdao.findAll();
 			}
-	
+		request.setAttribute("searchString",searchString);
 		request.setAttribute("partList", parts);
         RequestDispatcher dispatcher = request.getServletContext()
                 .getRequestDispatcher("/partView.jsp");

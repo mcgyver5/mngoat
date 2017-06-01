@@ -7,10 +7,11 @@ html, body {
 }
 body { 
 	background:url(../images/tail-top.jpg) left top repeat-x #140100;
+	
 	font-family:Georgia, "Times New Roman", Times, serif;
 	font-size:100%; 
 	line-height:1.5em;
-	color:#8b8080;
+	
 }
 .menutext {
 	line-height:1.0em;
@@ -19,11 +20,11 @@ body {
 	text-align:center;
 }
 body.menu {
-	background:url(../images/tail-top.jpg) left top repeat-x #140100;
+	/*background:url(../images/tail-top.jpg) left top repeat-x #140100; */
 	font-family:Georgia, "Times New Roman", Times, serif;
 	font-size:100%; 
 	line-height:1.5em;
-	color:#8b8080;
+	color:khaki;
 }
 
 img {
@@ -37,14 +38,42 @@ img.med {
     width: 150px;
     margin: 12px 12px 12px 12px;
 }
-ul, ol { 
-	list-style:none;
+
+li.hor {
+	float: left;
+
+
+}
+li a {
+    display: block;
+    padding: 8px;
+    background-color: #11a22c;
+    border-right: 1px solid #bbb;
 }
 
+li a:hover {
+    background-color: #aaa;
+}
+ul, ol { 
+	list-style:none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
 
+}
+
+.footer,
+.push {
+  height: 50px;
+}
 .wrapper { 
 	width:100%;
 	overflow:hidden;
+	  min-height: 100%;
+
+  /* Equal to height of footer */
+  /* But also accounting for potential margin-bottom of last child */
+  margin-bottom: -50px;
 }
 
 
@@ -164,4 +193,3 @@ h4.menu {
 			text-decoration:underline;
 		}
 
-/*==========================================*/
