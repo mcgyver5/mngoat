@@ -8,7 +8,7 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 		 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/w3style.css"> 
 	</head>
-  <body class="w3-container">
+  <body class="menu">
   <div class="wrapper">
     <div id="pageheader">
     	<ul class="hor">
