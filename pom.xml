@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>mngoat</groupId>
   <artifactId>mngoat</artifactId>
-  <version>0.0.2</version>
+  <version>0.0.3</version>
   <packaging>war</packaging>
   <name>mngoat</name>
   <description>purposely insecure web application</description>
